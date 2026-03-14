@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio - Artist Portfolio Page</title>
+  <link rel="stylesheet" href="artistportfolio.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+        <div class="header-container">
+            <div class="logo">PaletteVerse</div>
+            <nav class="nav-menu">
+                <a href="artist_dashboard.html" class="nav-link">Home</a>
+                <a href="artist_portfolio.html" class="nav-link">Portfolio</a>
+                <a href="tasks.html" class="nav-link">Tasks/Challenges</a>
+                <a href="chat.html" class="nav-link">Chats</a>
+            </nav>
+           
+        </div>
+    </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="portfolio-header">
+      <div class="portfolio-intro">
+        <h1>My Portfolio</h1>
+        <p>Manage and showcase your artistic creations</p>
+      </div>
+
+      <div class="portfolio-actions">
+       
+        <button class="btn btn-primary" id="uploadArtworkBtn">⬆️ Upload Artwork</button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state hidden" aria-live="polite">
+      <div class="empty-state-content">
+        <div class="empty-state-icon">🎨</div>
+        <h2>No Artwork Yet</h2>
+        <p>Upload your Artwork</p>
+        <button class="btn btn-primary" id="emptyStateUploadBtn">Upload your first artwork</button>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div id="portfolioGrid" class="portfolio-grid hidden" aria-live="polite" aria-label="Portfolio gallery"></div>
+  </main>
+
+  <!-- Upload/Edit Modal -->
+  <div id="artworkModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="modalTitle">Upload Artwork</h2>
+        <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+      </div>
+
+      <form id="artworkForm" class="artwork-form" novalidate>
+        <!-- hidden field to track editing key -->
+        <input type="hidden" id="editingKey" value="">
+
+        <div class="form-group">
+          <label class="form-label" for="artworkImage">Artwork Image <span class="required">*</span></label>
+
+          <div id="imageUpload" class="image-upload" tabindex="0" role="button" aria-label="Choose image">
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <div class="upload-text">Click to upload image</div>
+            <div class="upload-subtext">PNG, JPG — up to 10MB</div>
+
+            <input type="file" id="artworkImage" class="file-input" accept="image/*" aria-label="Artwork image" />
+          </div>
+
+          <div id="imagePreview" class="image-preview hidden" aria-hidden="true">
+            <img id="previewImg" src="" alt="Selected artwork preview">
+            <button type="button" class="change-image-btn" id="changeImageBtn">Change Image</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="artworkTitle" class="form-label">Title <span class="required">*</span></label>
+          <input id="artworkTitle" class="form-input" type="text" placeholder="Enter artwork title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="artworkDescription" class="form-label">Description</label>
+          <textarea id="artworkDescription" class="form-textarea" placeholder="Describe your artwork..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="artworkCategory" class="form-label">Category <span class="required">*</span></label>
+            <select id="artworkCategory" class="form-select" required>
+              <option value="">Select category</option>
+              <option value="painting">Painting</option>
+              <option value="drawing">Drawing</option>
+              <option value="digital">Digital</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="artworkPaperSize" class="form-label">Paper Size <span class="required">*</span></label>
+            <select id="artworkPaperSize" class="form-select" required>
+              <option value="">Select size</option>
+              <option value="a4">A4</option>
+              <option value="a3">A3</option>
+              <option value="a2">A2</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="artworkPrice" class="form-label">Price (₹) <span class="required">*</span></label>
+          <input id="artworkPrice" class="form-input" type="number" placeholder="0.00" min="0" step="0.01" required>
+        </div>
+
+        <div class="progress-row" aria-hidden="false">
+          <progress id="uploadProgress" value="0" max="100" style="display:none;"></progress>
+          <div id="uploadStatus" class="upload-status" aria-live="polite"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Upload Artwork</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+  <script type="module" src="artist_portfolio.js"></script>
+</body>
+</html>

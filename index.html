@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup - The Coding Wizard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ROLE SELECTION SCREEN -->
+        <div id="roleSelectionContent" class="role-selection-wrapper">
+            <div class="role-selection">
+                <h1 class="role-title">Choose Your Role</h1>
+                <p class="role-subtitle">Get started as a buyer or artist</p>
+                <div class="role-cards">
+                    <!-- BUYER ROLE -->
+                    <div class="role-card buyer-role" onclick="selectRole('buyer')">
+                        <div class="role-icon">👤</div>
+                        <h3>Buyer</h3>
+                        <p>Discover & Collect artwork</p>
+                        <button class="btn-select">Continue as Buyer</button>
+                    </div>
+                    <!-- ARTIST ROLE -->
+                    <div class="role-card artist-role" onclick="selectRole('artist')">
+                        <div class="role-icon">🎨</div>
+                        <h3>Artist</h3>
+                        <p>Create & Showcase your art</p>
+                        <button class="btn-select">Continue as Artist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUTH WRAPPER (HIDDEN BY DEFAULT) -->
+        <div id="authContent" class="hidden auth-wrapper">
+            <!-- BUYER LOGIN CARD -->
+            <div id="buyerLoginCard" class="auth-card hidden">
+                <div class="auth-container">
+                    <div class="welcome-section">
+                        <button class="btn-back" onclick="goBack()">← Back</button>
+                        <h2 class="welcome-title">Welcome back to PaletteVerse!</h2>
+                        <p class="welcome-text">Discover and collect amazing artwork from talented artists.</p>
+                        <div class="instagram-icon">🎨</div>
+                    </div>
+                    <div class="form-section">
+                        <form id="buyerLoginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="buyer-login-username">Email</label>
+                                <input type="email" id="buyer-login-username" placeholder="Enter your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="buyer-login-password">Password</label>
+                                <input type="password" id="buyer-login-password" placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="btn-login">Login</button>
+                        </form>
+                        <div class="form-footer">
+                            Don't have an account? <a href="#" class="signup-link" onclick="switchToSignup(event)">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIST LOGIN CARD -->
+            <div id="artistLoginCard" class="auth-card hidden">
+                <div class="auth-container">
+                    <div class="welcome-section">
+                        <button class="btn-back" onclick="goBack()">← Back</button>
+                        <h2 class="welcome-title">Welcome back to PaletteVerse!</h2>
+                        <p class="welcome-text">Create and showcase your artwork to the world.</p>
+                        <div class="instagram-icon">🎨</div>
+                    </div>
+                    <div class="form-section">
+                        <form id="artistLoginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="artist-login-username">Email</label>
+                                <input type="email" id="artist-login-username" placeholder="Enter your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="artist-login-password">Password</label>
+                                <input type="password" id="artist-login-password" placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="btn-login">Login</button>
+                        </form>
+                        <div class="form-footer">
+                            Don't have an account? <a href="#" class="signup-link" onclick="switchToSignup(event)">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUYER SIGNUP CARD -->
+            <div id="buyerSignupCard" class="auth-card hidden">
+                <div class="auth-container">
+                    <div class="welcome-section">
+                        <button class="btn-back" onclick="goBack()">← Back</button>
+                        <h2 class="welcome-title">Join PaletteVerse</h2>
+                        <p class="welcome-text">Create your buyer account and start discovering incredible artwork from talented artists worldwide.</p>
+                        <div class="instagram-icon">🎨</div>
+                    </div>
+                    <div class="form-section">
+                        <form id="buyerSignupForm" class="signup-form">
+                            <div class="form-group">
+                                <label for="buyer-signup-username">Name</label>
+                                <input type="text" id="buyer-signup-username" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="buyer-signup-email">Email</label>
+                                <input type="email" id="buyer-signup-email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="buyer-signup-password">Password</label>
+                                <input type="password" id="buyer-signup-password" placeholder="Create a password" required>
+                            </div>
+                            <button type="submit" class="btn-login">Register</button>
+                        </form>
+                        <div class="form-footer">
+                            Already have an account? <a href="#" class="signup-link" onclick="switchToLogin()">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIST SIGNUP CARD -->
+            <div id="artistSignupCard" class="auth-card hidden">
+                <div class="auth-container">
+                    <div class="welcome-section">
+                        <button class="btn-back" onclick="goBack()">← Back</button>
+                        <h2 class="welcome-title">Join PaletteVerse</h2>
+                        <p class="welcome-text">Join our creative community and showcase your amazing artwork to collectors around the globe.</p>
+                        <div class="instagram-icon">🎨</div>
+                    </div>
+                    <div class="form-section">
+                        <form id="artistSignupForm" class="signup-form">
+                            <div class="form-group">
+                                <label for="artist-signup-username">Name</label>
+                                <input type="text" id="artist-signup-username" placeholder="Enter your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="artist-signup-email">Email</label>
+                                <input type="email" id="artist-signup-email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="artist-signup-password">Password</label>
+                                <input type="password" id="artist-signup-password" placeholder="Create a password" required>
+                            </div>
+                            <button type="submit" class="btn-login">Register</button>
+                        </form>
+                        <div class="form-footer">
+                            Already have an account? <a href="#" class="signup-link" onclick="switchToLogin()">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+ <!-- Firebase App -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

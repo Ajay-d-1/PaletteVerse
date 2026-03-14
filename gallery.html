@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaletteVerse - Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">PaletteVerse</div>
+            <nav class="nav-menu">
+                <a href="buyer_dashboard.html" class="nav-link">Home</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="artists_available.html" class="nav-link">Artists</a>
+                <a href="contact.html" class="nav-link">Contacts</a>
+            </nav>
+            <div class="header-icons">
+                <a href="cart.html" class="icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </a>
+                <a href="buyer_profile.html" class="icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <div class="divider"></div>
+                <a href="index.html" class="icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Title Section -->
+        <section class="title-section">
+            <h1 class="page-title">Our Artworks</h1>
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="featured">Featured</button>
+                <button class="tab-btn" data-filter="bestseller">Best Seller</button>
+                <button class="tab-btn" data-filter="newarrival">New Arrival</button>
+            </div>
+        </section>
+
+        <!-- Category Filters -->
+        <section class="category-filters">
+            <div class="filter-group">
+                <select class="category-select">
+                    <option>Select Categories</option>
+                    <option>Portraits</option>
+                    <option>Landscapes</option>
+                    <option>Abstract</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select class="category-select">
+                    <option>Sort Price</option>
+                    <option>Low to high</option>
+                    <option>High to Low</option>
+                </select>
+            </div>
+            <div class="filter-group search-group">
+                <input type="text" class="search-input" placeholder="Search artworks...">
+                <button class="search-btn">
+                    <!-- svg -->
+                </button>
+            </div>
+        </section>
+
+        <!-- Products Grid (dynamic) -->
+        <section id="products-grid" class="products-grid">
+            <!-- This will be filled dynamically from Firebase -->
+            <div id="loading-msg" style="padding:40px;text-align:center;color:#666">Loading artworks…</div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- footer content -->
+        </div>
+
+        <div class="footer-bottom">
+            <p>2023 all Right Reserved Term of use GREENMIND</p>
+        </div>
+    </footer>
+
+    <!-- NOTE: gallery.js now contains Firebase logic and UI handlers -->
+    <script type="module" src="gallery.js"></script>
+</body>
+</html>
